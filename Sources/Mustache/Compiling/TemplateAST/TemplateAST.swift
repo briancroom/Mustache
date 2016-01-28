@@ -35,13 +35,13 @@ final class TemplateAST {
     // become defined.
     //
     // See TemplateRepository.templateAST(named:relativeToTemplateID:error:).
-    enum Type {
+    enum TemplateType {
         case Undefined
         case Defined(nodes: [TemplateASTNode], contentType: ContentType)
     }
-    var type: Type
+    var type: TemplateType
     
-    private init(type: Type) {
+    private init(type: TemplateType) {
         self.type = type
     }
     
@@ -50,14 +50,14 @@ final class TemplateAST {
     Returns an undefined TemplateAST.
     */
     convenience init() {
-        self.init(type: Type.Undefined)
+        self.init(type: TemplateType.Undefined)
     }
     
     /**
     Returns a defined TemplateAST.
     */
     convenience init(nodes: [TemplateASTNode], contentType: ContentType) {
-        self.init(type: Type.Defined(nodes: nodes, contentType: contentType))
+        self.init(type: TemplateType.Defined(nodes: nodes, contentType: contentType))
     }
     
     /**
